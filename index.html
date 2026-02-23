@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Mirror's Curse — Interactive Narrative Map</title>
+<style>
+:root{--bg:#0f0f1a;--surface:#1a1a2e;--surface2:#222244;--accent:#e94560;--accent2:#533483;--text:#eee;--dim:#999;--border:#333;--success:#4ecdc4;--warn:#f9ca24}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Toolbar */
+.toolbar{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.2rem;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;flex-wrap:wrap}
+.toolbar h1{font-size:1.1rem;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#c44dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.back-link{color:var(--dim);font-size:.85rem;flex-shrink:0}
+.search-box{flex:1;min-width:180px;max-width:400px;padding:.4rem .8rem;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85rem;outline:none}
+.search-box:focus{border-color:var(--accent)}
+.view-tabs{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.view-tab{padding:.3rem .7rem;background:transparent;border:none;color:var(--dim);cursor:pointer;font-size:.8rem;transition:all .2s}
+.view-tab.active{background:var(--accent);color:#fff}
+.stats{font-size:.75rem;color:var(--dim);margin-left:auto}
+
+/* Character filters */
+.char-filters{display:flex;gap:.4rem;padding:.5rem 1.2rem;background:var(--surface);border-bottom:1px solid var(--border);flex-wrap:wrap;align-items:center}
+.char-filters label{font-size:.75rem;color:var(--dim);margin-right:.3rem}
+.char-btn{padding:.2rem .5rem;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-size:.72rem;transition:all .2s}
+.char-btn.active{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+.char-btn:hover{border-color:var(--accent)}
+
+/* Content */
+.content{padding:1.2rem;max-width:1200px;margin:0 auto}
+
+/* Section */
+.section{margin-bottom:.8rem}
+.section-header{display:flex;align-items:center;gap:.5rem;padding:.5rem .3rem;cursor:pointer;user-select:none;border-radius:6px;transition:background .15s}
+.section-header:hover{background:var(--surface)}
+.section-header h2{font-size:.95rem;font-weight:600}
+.section-count{color:var(--dim);font-size:.8rem}
+.section-toggle{color:var(--dim);transition:transform .2s;font-size:.7rem}
+.section-toggle.open{transform:rotate(90deg)}
+.section-body{display:none;padding-left:.5rem}
+
+/* Passage card */
+.passage{background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:.7rem;overflow:hidden;transition:border-color .2s}
+.passage:hover{border-color:var(--accent2)}
+.passage-bg{width:100%;max-height:300px;object-fit:cover;display:block;cursor:pointer;border-bottom:1px solid var(--border)}
+.passage-inner{padding:.8rem 1rem}
+.passage-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;gap:.5rem;flex-wrap:wrap}
+.passage-label{font-weight:600;color:var(--accent);font-size:.85rem}
+.passage-pid{font-size:.7rem;color:var(--dim);font-family:monospace}
+.passage-chars{display:flex;gap:.3rem;flex-wrap:wrap}
+.char-tag{display:inline-block;padding:.1rem .4rem;border-radius:4px;font-size:.68rem;background:rgba(83,52,131,.35);color:#c9a0ff}
+.passage-text{font-size:.88rem;line-height:1.75;color:var(--text);white-space:pre-wrap;word-wrap:break-word}
+.passage-text .speaker{color:var(--accent);font-weight:600}
+.passage-cg{margin-top:.5rem;text-align:center}
+.passage-cg img{max-width:100%;max-height:400px;border-radius:6px;cursor:pointer;border:1px solid var(--border);transition:transform .15s}
+.passage-cg img:hover{transform:scale(1.01)}
+
+/* Choices */
+.choices{margin-top:.5rem;padding-left:.8rem;border-left:2px solid var(--accent2)}
+.choice{padding:.2rem 0;font-size:.82rem;color:var(--dim)}
+.choice::before{content:'→ ';color:var(--accent)}
+
+/* Load more */
+.load-more{display:block;width:100%;padding:.5rem;margin:.5rem 0;background:var(--surface);border:1px dashed var(--border);border-radius:6px;color:var(--dim);cursor:pointer;font-size:.8rem;text-align:center}
+.load-more:hover{border-color:var(--accent);color:var(--text)}
+
+/* Lightbox */
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:1000;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox.active{display:flex}
+.lightbox img{max-width:95vw;max-height:95vh;object-fit:contain;border-radius:8px}
+.lightbox-close{position:fixed;top:1rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;z-index:1001}
+
+/* Empty state */
+.empty{text-align:center;padding:3rem;color:var(--dim)}
+.empty h2{margin-bottom:.5rem;font-size:1.2rem}
+
+/* Scroll to top */
+.scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:none;align-items:center;justify-content:center;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.scroll-top.show{display:flex}
+
+@media(max-width:768px){
+  .toolbar{padding:.5rem .8rem;gap:.5rem}
+  .search-box{max-width:100%;order:10;flex-basis:100%}
+  .content{padding:.6rem}
+  .stats{display:none}
+  .passage-bg{max-height:180px}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="back-link" href="#">← Back</a>
+  <h1>A Mirror's Curse</h1>
+  <input class="search-box" id="search" placeholder="Search text, characters, scenes...">
+  <div class="view-tabs">
+    <button class="view-tab active" data-view="day">By Day</button>
+    <button class="view-tab" data-view="scene">By Scene</button>
+    <button class="view-tab" data-view="character">By Character</button>
+  </div>
+  <span class="stats" id="stats"></span>
+</div>
+
+<div class="char-filters" id="charFilters">
+  <label>Characters:</label>
+</div>
+
+<div class="content" id="content">
+  <div class="empty"><p>Loading...</p></div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* ── State ── */
+let DATA = null;
+let currentView = 'day';
+let searchQuery = '';
+let activeChars = new Set();
+let searchTimer = null;
+const BATCH = 20;
+
+/* ── Scene name mapping ── */
+const SCENE_NAMES = {
+  'autumn-festival': 'Autumn Festival',
+  'city-streets': 'City Streets',
+  'home-exteriord': 'Home Exterior (Day)',
+  'home-exteriorn': 'Home Exterior (Night)',
+  'home-exteriornd': 'Home Exterior (Night/Dark)',
+  'mall': 'Mall',
+  'player-bathroom': 'Bathroom',
+  'player-bedroomd': 'Bedroom (Day)',
+  'player-bedroomn': 'Bedroom (Night)',
+  'player-kitchen': 'Kitchen',
+  'player-livingroom': 'Living Room',
+  'player-livingroomd': 'Living Room (Day)',
+  'player-livingroomn': 'Living Room (Night)',
+  'restaurant-pizza': 'Pizza Restaurant',
+  'restaurant-sushi': 'Sushi Restaurant',
+  'restroom': 'Restroom',
+  'school-cafeteria': 'School Cafeteria',
+  'school-exterior': 'School Exterior',
+  'school-footballa': 'Football Field (Afternoon)',
+  'school-footballd': 'Football Field (Day)',
+  'school-footballn': 'Football Field (Night)',
+  'school-footballnd': 'Football Field (Night/Dark)',
+  'school-gym-bts': 'School Gym (BTS)',
+  'school-gymd': 'School Gym (Day)',
+  'school-hallway': 'School Hallway',
+  'school-homeroom': 'School Homeroom',
+  'school-locker': 'School Locker Room',
+  'serena-tent': "Serena's Tent",
+  'store-boutique0': 'Boutique',
+  'store-jewelry': 'Jewelry Store'
+};
+
+/* ── Init ── */
+async function init() {
+  try {
+    const res = await fetch('data/passages.json');
+    DATA = await res.json();
+    document.getElementById('stats').textContent =
+      `${DATA.meta.total_passages} passages | v${DATA.meta.version}`;
+    buildCharFilters();
+    render();
+    bindEvents();
+  } catch (e) {
+    document.getElementById('content').innerHTML =
+      '<div class="empty"><h2>Failed to load</h2><p>' + e.message + '</p></div>';
+  }
+}
+
+/* ── Character filters ── */
+function buildCharFilters() {
+  const el = document.getElementById('charFilters');
+  if (!DATA.characters) return;
+  DATA.characters.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'char-btn';
+    btn.textContent = c.name;
+    btn.title = c.role || '';
+    btn.onclick = () => {
+      if (activeChars.has(c.name)) {
+        activeChars.delete(c.name);
+        btn.classList.remove('active');
+      } else {
+        activeChars.add(c.name);
+        btn.classList.add('active');
+      }
+      render();
+    };
+    el.appendChild(btn);
+  });
+}
+
+/* ── Filter passages ── */
+function getFiltered() {
+  let list = DATA.passages;
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    list = list.filter(p => {
+      const t = (p.text || '').toLowerCase();
+      const n = (p.name || '').toLowerCase();
+      const ch = (p.characters || []).join(' ').toLowerCase();
+      const g = (p.group || '').toLowerCase();
+      return t.includes(q) || n.includes(q) || ch.includes(q) || g.includes(q);
+    });
+  }
+  if (activeChars.size > 0) {
+    list = list.filter(p =>
+      (p.characters || []).some(c => activeChars.has(c))
+    );
+  }
+  return list;
+}
+
+/* ── Group passages ── */
+function groupBy(list) {
+  const groups = new Map();
+  for (const p of list) {
+    let key;
+    switch (currentView) {
+      case 'scene': {
+        const bg = (p.images && p.images.bg) || '';
+        if (bg) {
+          const stem = bg.replace('images/bg/', '').replace('.webp', '');
+          key = SCENE_NAMES[stem] || stem;
+        } else {
+          key = 'No Background';
+        }
+        break;
+      }
+      case 'character': {
+        const ch = p.characters || [];
+        key = ch.length > 0 ? ch[0] : 'No Character';
+        break;
+      }
+      default: // day
+        key = p.group || 'Unknown';
+    }
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(p);
+  }
+  return groups;
+}
+
+/* ── Render ── */
+function render() {
+  const el = document.getElementById('content');
+  el.innerHTML = '';
+  const filtered = getFiltered();
+  if (filtered.length === 0) {
+    el.innerHTML = '<div class="empty"><h2>No results</h2><p>Try a different search term or clear filters.</p></div>';
+    return;
+  }
+  const groups = groupBy(filtered);
+  for (const [name, passages] of groups) {
+    const section = document.createElement('div');
+    section.className = 'section';
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = `<span class="section-toggle">▶</span><h2>${esc(name)}</h2><span class="section-count">(${passages.length})</span>`;
+    const body = document.createElement('div');
+    body.className = 'section-body';
+    header.onclick = () => toggleSection(header, body, passages);
+    section.appendChild(header);
+    section.appendChild(body);
+    el.appendChild(section);
+    // Auto-expand if searching or few groups
+    if (searchQuery && groups.size <= 5) {
+      toggleSection(header, body, passages);
+    }
+  }
+}
+
+function toggleSection(header, body, passages) {
+  const toggle = header.querySelector('.section-toggle');
+  if (body.style.display === 'block') {
+    body.style.display = 'none';
+    toggle.classList.remove('open');
+  } else {
+    body.style.display = 'block';
+    toggle.classList.add('open');
+    if (!body.dataset.rendered) {
+      renderPassages(body, passages);
+      body.dataset.rendered = '1';
+    }
+  }
+}
+
+function renderPassages(container, passages) {
+  const batch = passages.slice(0, BATCH);
+  for (const p of batch) container.appendChild(createPassageEl(p));
+  if (passages.length > BATCH) {
+    const btn = document.createElement('button');
+    btn.className = 'load-more';
+    btn.textContent = `Load more (${passages.length - BATCH} remaining)`;
+    btn.onclick = () => {
+      btn.remove();
+      for (const p of passages.slice(BATCH)) container.appendChild(createPassageEl(p));
+    };
+    container.appendChild(btn);
+  }
+}
+
+/* ── Passage element ── */
+function createPassageEl(p) {
+  const el = document.createElement('div');
+  el.className = 'passage';
+  let html = '';
+
+  // Background image
+  if (p.images && p.images.bg) {
+    html += `<img class="passage-bg" src="${esc(p.images.bg)}" alt="Background" loading="lazy" onclick="openLightbox(this.src)">`;
+  }
+
+  html += '<div class="passage-inner">';
+
+  // Header: label + characters
+  const chars = (p.characters || []).map(c =>
+    `<span class="char-tag">${esc(c)}</span>`
+  ).join('');
+  html += `<div class="passage-header">
+    <div><span class="passage-label">${esc(p.name || '')}</span> <span class="passage-pid">#${p.pid || '?'}</span></div>
+    <div class="passage-chars">${chars}</div>
+  </div>`;
+
+  // Text
+  const text = formatText(p.text || '');
+  html += `<div class="passage-text">${text}</div>`;
+
+  // CG image
+  if (p.images && p.images.cg) {
+    html += `<div class="passage-cg"><img src="${esc(p.images.cg)}" alt="CG" loading="lazy" onclick="openLightbox(this.src)"></div>`;
+  }
+
+  // Choices
+  if (p.choices && p.choices.length > 0) {
+    html += '<div class="choices">';
+    for (const c of p.choices) {
+      html += `<div class="choice">${esc(c.text || c)}</div>`;
+    }
+    html += '</div>';
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+  return el;
+}
+
+/* ── Helpers ── */
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function formatText(t) {
+  return esc(t)
+    .replace(/\n/g, '<br>')
+    .replace(/\[Choice: ([^\]]+)\]/g, '')  // Remove inline choice markers (shown in choices section)
+    .replace(/\[Continue to: [^\]]+\]/g, '')
+    .replace(/"([^"]{1,40})":/g, '<span class="speaker">"$1":</span>')
+    .replace(/\[(\w+)\]/g, '<em style="color:var(--warn);font-size:.8em">[$1]</em>');  // Variable refs
+}
+
+/* ── Lightbox ── */
+function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ── Events ── */
+function bindEvents() {
+  // Search
+  document.getElementById('search').addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      searchQuery = e.target.value.trim();
+      render();
+    }, 300);
+  });
+
+  // View tabs
+  document.querySelectorAll('.view-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentView = tab.dataset.view;
+      render();
+    });
+  });
+
+  // Lightbox close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Scroll to top button
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  });
+}
+
+/* ── Boot ── */
+init();
+</script>
+</body>
+</html>
