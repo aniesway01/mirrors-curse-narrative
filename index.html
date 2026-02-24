@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Mirror's Curse — Interactive Narrative Map</title>
+<title>鏡中詛咒 A Mirror's Curse — 互動敘事地圖</title>
 <style>
 :root{--bg:#0f0f1a;--surface:#1a1a2e;--surface2:#222244;--accent:#e94560;--accent2:#533483;--text:#eee;--dim:#999;--border:#333;--success:#4ecdc4;--warn:#f9ca24}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -81,6 +81,12 @@ a:hover{text-decoration:underline}
 .scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:none;align-items:center;justify-content:center;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 .scroll-top.show{display:flex}
 
+/* Language toggle */
+.lang-toggle{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.lang-btn{padding:.3rem .6rem;background:transparent;border:none;color:var(--dim);cursor:pointer;font-size:.75rem;transition:all .2s}
+.lang-btn.active{background:var(--accent2);color:#fff}
+.passage-text-secondary{font-size:.78rem;line-height:1.6;color:var(--dim);margin-top:.4rem;white-space:pre-wrap;word-wrap:break-word;font-style:italic;max-height:200px;overflow-y:auto;border-top:1px dashed var(--border);padding-top:.4rem}
+
 @media(max-width:768px){
   .toolbar{padding:.5rem .8rem;gap:.5rem}
   .search-box{max-width:100%;order:10;flex-basis:100%}
@@ -100,6 +106,11 @@ a:hover{text-decoration:underline}
     <button class="view-tab active" data-view="day">By Day</button>
     <button class="view-tab" data-view="scene">By Scene</button>
     <button class="view-tab" data-view="character">By Character</button>
+  </div>
+  <div class="lang-toggle" id="langToggle" style="display:none">
+    <button class="lang-btn active" data-lang="zh">中文</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="both">Both</button>
   </div>
   <span class="stats" id="stats"></span>
 </div>
@@ -126,6 +137,8 @@ let currentView = 'day';
 let searchQuery = '';
 let activeChars = new Set();
 let searchTimer = null;
+let showLang = 'zh'; // 'zh', 'en', 'both'
+let hasZh = false;
 const BATCH = 20;
 
 /* ── Scene name mapping ── */
@@ -167,8 +180,17 @@ async function init() {
   try {
     const res = await fetch('data/passages.json');
     DATA = await res.json();
-    document.getElementById('stats').textContent =
-      `${DATA.meta.total_passages} passages | v${DATA.meta.version}`;
+    hasZh = DATA.meta.has_zh || DATA.passages.some(p => p.text_zh);
+    if (hasZh) {
+      document.getElementById('langToggle').style.display = 'flex';
+      const zhCount = DATA.passages.filter(p => p.text_zh).length;
+      document.getElementById('stats').textContent =
+        `${DATA.meta.total_passages} passages | ${zhCount} translated | v${DATA.meta.version}`;
+    } else {
+      showLang = 'en';
+      document.getElementById('stats').textContent =
+        `${DATA.meta.total_passages} passages | v${DATA.meta.version}`;
+    }
     buildCharFilters();
     render();
     bindEvents();
@@ -208,10 +230,11 @@ function getFiltered() {
     const q = searchQuery.toLowerCase();
     list = list.filter(p => {
       const t = (p.text || '').toLowerCase();
+      const tz = (p.text_zh || '').toLowerCase();
       const n = (p.name || '').toLowerCase();
       const ch = (p.characters || []).join(' ').toLowerCase();
       const g = (p.group || '').toLowerCase();
-      return t.includes(q) || n.includes(q) || ch.includes(q) || g.includes(q);
+      return t.includes(q) || tz.includes(q) || n.includes(q) || ch.includes(q) || g.includes(q);
     });
   }
   if (activeChars.size > 0) {
@@ -333,9 +356,15 @@ function createPassageEl(p) {
     <div class="passage-chars">${chars}</div>
   </div>`;
 
-  // Text
-  const text = formatText(p.text || '');
-  html += `<div class="passage-text">${text}</div>`;
+  // Text (language-aware)
+  if (showLang === 'both' && p.text_zh) {
+    html += `<div class="passage-text">${formatText(p.text_zh)}</div>`;
+    html += `<div class="passage-text-secondary">${formatText(p.text || '')}</div>`;
+  } else if (showLang === 'zh' && p.text_zh) {
+    html += `<div class="passage-text">${formatText(p.text_zh)}</div>`;
+  } else {
+    html += `<div class="passage-text">${formatText(p.text || '')}</div>`;
+  }
 
   // CG image
   if (p.images && p.images.cg) {
@@ -406,6 +435,17 @@ function bindEvents() {
     });
   });
 
+  // Language toggle
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showLang = btn.dataset.lang;
+      clearRendered();
+      render();
+    });
+  });
+
   // Lightbox close on Escape
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeLightbox();
@@ -414,6 +454,13 @@ function bindEvents() {
   // Scroll to top button
   window.addEventListener('scroll', () => {
     document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  });
+}
+
+function clearRendered() {
+  document.querySelectorAll('.section-body').forEach(el => {
+    el.dataset.rendered = '';
+    el.innerHTML = '';
   });
 }
 
