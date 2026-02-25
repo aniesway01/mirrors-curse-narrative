@@ -539,6 +539,68 @@ body {
   font-size: 14px;
 }
 
+/* === Effect Badges === */
+.choice-effects { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+.effect-badge {
+  font-size: 10px; padding: 1px 6px; border-radius: 8px;
+  font-family: 'Consolas', monospace; white-space: nowrap;
+}
+.effect-up   { background: rgba(74,222,128,0.15); color: #4ade80; }
+.effect-down { background: rgba(248,113,113,0.15); color: #f87171; }
+.effect-set  { background: rgba(96,165,250,0.15); color: #60a5fa; }
+.effect-flag { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.choice-target {
+  font-size: 10px; color: var(--accent); cursor: pointer;
+  text-decoration: underline; text-decoration-style: dashed;
+  margin-left: 4px; white-space: nowrap;
+}
+.choice-target:hover { color: #fff; }
+.choice-item { flex-direction: column; align-items: flex-start; }
+
+/* === Conditions Panel === */
+.passage-conditions { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border); }
+.cond-toggle {
+  font-size: 11px; color: var(--text3); cursor: pointer; user-select: none;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.cond-toggle:hover { color: var(--accent); }
+.cond-arrow { font-size: 9px; transition: transform 0.15s; display: inline-block; }
+.cond-arrow.open { transform: rotate(90deg); }
+.cond-branches { display: none; padding: 6px 0 0 10px; }
+.cond-branches.open { display: block; }
+.cond-branch { font-size: 12px; margin: 4px 0; padding: 4px 8px; border-left: 2px solid var(--border); }
+.cond-branch:hover { border-left-color: var(--accent); }
+.cond-expr { color: var(--accent); font-family: 'Consolas', monospace; font-size: 10px; display: block; margin-bottom: 2px; }
+.cond-preview { color: var(--text2); font-size: 11px; line-height: 1.4; }
+
+/* === Passage Var Changes === */
+.passage-var-changes { display: flex; flex-wrap: wrap; gap: 3px; margin: 4px 0 6px; }
+.var-badge {
+  font-size: 10px; padding: 1px 6px; border-radius: 8px;
+  font-family: 'Consolas', monospace; white-space: nowrap;
+}
+.var-up   { background: rgba(74,222,128,0.1); color: #4ade80; }
+.var-down { background: rgba(248,113,113,0.1); color: #f87171; }
+.var-set  { background: rgba(96,165,250,0.1); color: #60a5fa; }
+
+/* === Variables Modal === */
+.vars-modal-overlay {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8); z-index: 900; justify-content: center; align-items: center;
+}
+.vars-modal-overlay.open { display: flex; }
+.vars-modal {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+  width: 90vw; max-width: 700px; max-height: 80vh; overflow-y: auto; padding: 20px;
+}
+.vars-modal h2 { font-size: 16px; color: #fff; margin-bottom: 12px; }
+.vars-cat { margin-bottom: 16px; }
+.vars-cat h3 { font-size: 13px; color: var(--accent); margin-bottom: 6px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.var-row { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 12px; }
+.var-row .var-name { color: var(--text); font-family: 'Consolas', monospace; min-width: 140px; }
+.var-row .var-init { color: var(--text3); min-width: 50px; }
+.var-row .var-desc { color: var(--text2); }
+
 /* === Scrollbar === */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -594,10 +656,15 @@ body {
         <input type="checkbox" id="showImg" checked>
         <span>圖片</span>
       </label>
+      <label class="toggle-row">
+        <input type="checkbox" id="showBranch" checked>
+        <span>分支</span>
+      </label>
       <div class="view-toggle">
         <button class="view-btn active" data-view="group" id="viewGroup">按分類</button>
         <button class="view-btn" data-view="all" id="viewAll">全部段落</button>
         <button class="view-btn" data-view="char" id="viewChar">角色</button>
+        <button class="view-btn" id="viewVars" onclick="showVarsModal()">變數</button>
       </div>
     </div>
   </div>
@@ -621,6 +688,11 @@ body {
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
   <img id="lightboxImg" src="" alt="CG">
+</div>
+
+<!-- Variables Modal -->
+<div class="vars-modal-overlay" id="varsModal" onclick="if(event.target===this)closeVarsModal()">
+  <div class="vars-modal" id="varsModalContent"></div>
 </div>
 
 <script>
@@ -651,13 +723,14 @@ let showZh = true;
 let showEn = false;
 let showName = false;
 let showImg = true;
+let showBranch = true;
 let currentView = 'group';
 let openGroups = new Set();
 let charFilter = null;
 
 // === Data Loading ===
 async function loadData() {
-  const resp = await fetch('data/passages.json?v=3');
+  const resp = await fetch('data/passages.json?v=4');
   DATA = await resp.json();
   if (!DATA.meta.has_zh) {
     document.getElementById('showZh').parentElement.style.display = 'none';
@@ -799,25 +872,65 @@ function passageHtml(p, idx) {
     }
   }
 
+  // --- Var Changes (top-level, auto-triggered) ---
+  let varChangesHtml = '';
+  if (showBranch && p.var_changes && p.var_changes.length > 0) {
+    const badges = p.var_changes.map(e => renderEffectBadge(e)).join('');
+    varChangesHtml = `<div class="passage-var-changes">${badges}</div>`;
+  }
+
   // --- Choices ---
   let choicesHtml = '';
   if (p.choices && p.choices.length > 0) {
     const items = p.choices.map(c => {
-      const text = typeof c === 'string' ? c : (c.text_zh || c.text || c.label || JSON.stringify(c));
-      const link = (typeof c === 'object' && c.link) ? `<span class="choice-link">→ ${escHtml(c.link)}</span>` : '';
-      return `<span class="choice-item"><span class="choice-arrow">▸</span>${escHtml(text)}${link}</span>`;
+      const text = typeof c === 'string' ? c : (c.text || c.label || JSON.stringify(c));
+      const target = (typeof c === 'object' && c.target) ? c.target : '';
+      const effects = (typeof c === 'object' && c.effects) ? c.effects : [];
+
+      let targetHtml = '';
+      if (showBranch && target && !target.startsWith('$')) {
+        targetHtml = `<span class="choice-target" onclick="event.stopPropagation();navigateToPassage('${escAttr(target)}')">→ ${escHtml(target)}</span>`;
+      } else if (showBranch && target && target.startsWith('$')) {
+        targetHtml = `<span class="choice-target" style="cursor:default">→ 動態 (${escHtml(target)})</span>`;
+      }
+
+      let effectsHtml = '';
+      if (showBranch && effects.length > 0) {
+        effectsHtml = `<div class="choice-effects">${effects.map(e => renderEffectBadge(e)).join('')}</div>`;
+      }
+
+      return `<div class="choice-item">
+        <div><span class="choice-arrow">▸</span> ${escHtml(text)}${targetHtml}</div>
+        ${effectsHtml}
+      </div>`;
     }).join('');
     choicesHtml = `<div class="passage-choices"><div class="passage-choices-label">選項分支 (${p.choices.length})</div><div class="choices-list">${items}</div></div>`;
   }
 
-  return `<div class="passage">
+  // --- Conditions ---
+  let condHtml = '';
+  if (showBranch && p.conditions && p.conditions.length > 0) {
+    const condId = 'cond_' + (p.pid || idx);
+    const totalBranches = p.conditions.reduce((s, c) => s + c.branches.length, 0);
+    let branchesHtml = p.conditions.map(cBlock =>
+      cBlock.branches.map(b =>
+        `<div class="cond-branch"><span class="cond-expr">${escHtml(b.cond)}</span><span class="cond-preview">${escHtml(b.preview)}</span></div>`
+      ).join('')
+    ).join('');
+    condHtml = `<div class="passage-conditions">
+      <span class="cond-toggle" onclick="toggleCond('${condId}')"><span class="cond-arrow" id="arr_${condId}">▶</span> 條件分支 (${totalBranches} 種)</span>
+      <div class="cond-branches" id="${condId}">${branchesHtml}</div>
+    </div>`;
+  }
+
+  return `<div class="passage" data-passage-name="${escAttr(p.name || '')}">
     ${imgHtml}
     <div class="passage-header">
       <span class="passage-title">${escHtml(title)}</span>
       ${charHtml}
       ${pid}
     </div>
-    ${pname}${tags}${textHtml}${choicesHtml}
+    ${pname}${tags}${varChangesHtml}${textHtml}${choicesHtml}${condHtml}
   </div>`;
 }
 
@@ -852,8 +965,101 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'Escape') { closeLightbox(); closeVarsModal(); }
 });
+
+// === Effect Badge Rendering ===
+function renderEffectBadge(e) {
+  const bare = (e.var || '').replace(/^\$/, '');
+  const desc = (DATA.variables && DATA.variables[e.var]) ? DATA.variables[e.var].description_zh : '';
+  const label = desc || bare;
+
+  if (e.op === '+=' || e.op === 'clamp+') {
+    return `<span class="effect-badge effect-up" title="${bare}">${label} +${e.val}</span>`;
+  } else if (e.op === '-=' || e.op === 'clamp-') {
+    return `<span class="effect-badge effect-down" title="${bare}">${label} -${e.val}</span>`;
+  } else if (e.val === 'true' || e.val === 'false') {
+    return `<span class="effect-badge effect-flag" title="${bare}">${label} = ${e.val}</span>`;
+  } else {
+    return `<span class="effect-badge effect-set" title="${bare}">${label} = ${e.val}</span>`;
+  }
+}
+
+// === Conditions Toggle ===
+function toggleCond(id) {
+  const el = document.getElementById(id);
+  const arr = document.getElementById('arr_' + id);
+  if (el) {
+    const open = el.classList.toggle('open');
+    if (arr) arr.classList.toggle('open', open);
+  }
+}
+
+// === Navigate to Passage ===
+function navigateToPassage(name) {
+  const p = DATA.passages.find(p => p.name === name);
+  if (!p) return;
+  charFilter = null;
+  updateFilterBar();
+  searchQuery = '';
+  document.getElementById('searchBox').value = '';
+  openGroups.add(p.group);
+  if (currentView === 'char') currentView = 'group';
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(currentView === 'group' ? 'viewGroup' : 'viewAll').classList.add('active');
+  resetAndRender();
+  setTimeout(() => {
+    const el = document.querySelector(`[data-passage-name="${CSS.escape(name)}"]`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.style.borderLeftColor = '#fbbf24';
+      setTimeout(() => el.style.borderLeftColor = '', 2000);
+    }
+  }, 200);
+}
+
+// === Variables Modal ===
+const CAT_ZH = {
+  identity_axis: '身份軸', personality: '性格', identity: '認同',
+  skill: '技能', relationship: '關係', romance: '浪漫',
+  transformation: '變化進度', game_state: '遊戲狀態',
+  decision_flag: '決策旗標', wardrobe: '服裝', other: '其他'
+};
+function showVarsModal() {
+  if (!DATA || !DATA.variables) return;
+  const vars = DATA.variables;
+  // Group by category
+  const cats = {};
+  for (const [k, v] of Object.entries(vars)) {
+    const cat = v.category || 'other';
+    if (!cats[cat]) cats[cat] = [];
+    cats[cat].push({ name: k, ...v });
+  }
+  // Render (skip 'other' and 'decision_flag' if too many)
+  const order = ['identity_axis','personality','identity','relationship','romance','skill','transformation','game_state','wardrobe','decision_flag','other'];
+  let html = '<h2>遊戲變數總覽 (' + Object.keys(vars).length + ')</h2>';
+  for (const cat of order) {
+    if (!cats[cat]) continue;
+    const items = cats[cat];
+    if ((cat === 'decision_flag' || cat === 'other') && items.length > 30) {
+      html += `<div class="vars-cat"><h3>${CAT_ZH[cat] || cat} (${items.length} 個，僅顯示前 30)</h3>`;
+      items.slice(0, 30).forEach(v => {
+        html += `<div class="var-row"><span class="var-name">${escHtml(v.name)}</span><span class="var-init">${escHtml(v.init)}</span><span class="var-desc">${escHtml(v.description_zh)}</span></div>`;
+      });
+    } else {
+      html += `<div class="vars-cat"><h3>${CAT_ZH[cat] || cat} (${items.length})</h3>`;
+      items.forEach(v => {
+        html += `<div class="var-row"><span class="var-name">${escHtml(v.name)}</span><span class="var-init">${escHtml(v.init)}</span><span class="var-desc">${escHtml(v.description_zh)}</span></div>`;
+      });
+    }
+    html += '</div>';
+  }
+  document.getElementById('varsModalContent').innerHTML = html;
+  document.getElementById('varsModal').classList.add('open');
+}
+function closeVarsModal() {
+  document.getElementById('varsModal').classList.remove('open');
+}
 
 // === Character Filter ===
 function setCharFilter(name) {
@@ -1108,6 +1314,11 @@ function init() {
   });
   document.getElementById('showImg').addEventListener('change', (e) => {
     showImg = e.target.checked;
+    clearRenderedCache();
+    resetAndRender();
+  });
+  document.getElementById('showBranch').addEventListener('change', (e) => {
+    showBranch = e.target.checked;
     clearRenderedCache();
     resetAndRender();
   });
