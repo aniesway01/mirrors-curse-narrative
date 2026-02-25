@@ -571,7 +571,58 @@ body {
 .cond-branch { font-size: 12px; margin: 4px 0; padding: 4px 8px; border-left: 2px solid var(--border); }
 .cond-branch:hover { border-left-color: var(--accent); }
 .cond-expr { color: var(--accent); font-family: 'Consolas', monospace; font-size: 10px; display: block; margin-bottom: 2px; }
-.cond-preview { color: var(--text2); font-size: 11px; line-height: 1.4; }
+.cond-summary { color: var(--text2); font-size: 11px; line-height: 1.4; cursor: pointer; }
+.cond-summary:hover { color: var(--text); }
+.cond-full-text {
+  display: none; color: var(--text); font-size: 12px; line-height: 1.6;
+  margin-top: 6px; padding: 8px 10px; background: var(--bg); border-radius: 6px;
+  white-space: pre-wrap; word-wrap: break-word;
+}
+.cond-full-text.open { display: block; }
+.cond-full-text p { margin-bottom: 6px; }
+.cond-nested { margin-left: 12px; padding-left: 8px; border-left: 1px dashed var(--accent); margin-top: 6px; }
+.cond-nested .cond-branch { font-size: 11px; }
+.cond-context-badge {
+  font-size: 9px; padding: 1px 5px; border-radius: 6px;
+  background: rgba(251,191,36,0.12); color: #fbbf24;
+  font-family: 'Consolas', monospace; margin-left: 6px; white-space: nowrap;
+}
+
+/* === CG Layer Compositor === */
+.cg-compositor { margin: 10px 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.cg-canvas-wrap { background: #000; position: relative; width: 100%; }
+.cg-canvas {
+  position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 */
+  overflow: hidden;
+}
+.cg-canvas img.cg-layer {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: contain; pointer-events: none;
+}
+.cg-controls {
+  padding: 8px 12px; background: var(--bg3);
+  border-top: 1px solid var(--border);
+}
+.cg-controls-title {
+  font-size: 11px; color: var(--text3); margin-bottom: 6px;
+  display: flex; align-items: center; gap: 4px;
+}
+.cg-control-row {
+  display: flex; align-items: center; gap: 8px; margin: 3px 0; font-size: 11px;
+}
+.cg-control-row label { color: var(--text2); min-width: 90px; }
+.cg-control-row input[type=range] { flex: 1; accent-color: var(--accent); height: 4px; }
+.cg-val { color: var(--accent); font-weight: 600; min-width: 20px; text-align: center; font-size: 12px; }
+.cg-variant-tabs {
+  display: flex; border-top: 1px solid var(--border);
+}
+.cg-variant-tabs button {
+  flex: 1; padding: 5px; background: none; border: none;
+  color: var(--text2); cursor: pointer; font-size: 11px;
+  transition: all 0.15s;
+}
+.cg-variant-tabs button.active { color: var(--accent); border-bottom: 2px solid var(--accent); background: var(--bg3); }
+.cg-variant-tabs button:hover:not(.active) { color: var(--text); }
 
 /* === Passage Var Changes === */
 .passage-var-changes { display: flex; flex-wrap: wrap; gap: 3px; margin: 4px 0 6px; }
@@ -688,6 +739,7 @@ body {
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
   <img id="lightboxImg" src="" alt="CG">
+  <div id="lightboxCompositor" style="display:none" onclick="event.stopPropagation()"></div>
 </div>
 
 <!-- Variables Modal -->
@@ -730,7 +782,7 @@ let charFilter = null;
 
 // === Data Loading ===
 async function loadData() {
-  const resp = await fetch('data/passages.json?v=4');
+  const resp = await fetch('data/passages.json?v=5');
   DATA = await resp.json();
   if (!DATA.meta.has_zh) {
     document.getElementById('showZh').parentElement.style.display = 'none';
@@ -738,6 +790,8 @@ async function loadData() {
     showEn = true;
     document.getElementById('showEn').checked = true;
   }
+  // Load CG manifest in parallel
+  await loadCgManifest();
   init();
 }
 
@@ -899,28 +953,54 @@ function passageHtml(p, idx) {
         effectsHtml = `<div class="choice-effects">${effects.map(e => renderEffectBadge(e)).join('')}</div>`;
       }
 
+      // Condition context badge
+      let condCtx = '';
+      if (showBranch && typeof c === 'object' && c.condition_context) {
+        condCtx = `<span class="cond-context-badge" title="此選項僅在此條件成立時出現">🔒 ${escHtml(c.condition_context)}</span>`;
+      }
+
       return `<div class="choice-item">
-        <div><span class="choice-arrow">▸</span> ${escHtml(text)}${targetHtml}</div>
+        <div><span class="choice-arrow">▸</span> ${escHtml(text)}${condCtx}${targetHtml}</div>
         ${effectsHtml}
       </div>`;
     }).join('');
     choicesHtml = `<div class="passage-choices"><div class="passage-choices-label">選項分支 (${p.choices.length})</div><div class="choices-list">${items}</div></div>`;
   }
 
-  // --- Conditions ---
+  // --- Conditions (v2: full text + nested) ---
   let condHtml = '';
   if (showBranch && p.conditions && p.conditions.length > 0) {
     const condId = 'cond_' + (p.pid || idx);
     const totalBranches = p.conditions.reduce((s, c) => s + c.branches.length, 0);
-    let branchesHtml = p.conditions.map(cBlock =>
-      cBlock.branches.map(b =>
-        `<div class="cond-branch"><span class="cond-expr">${escHtml(b.cond)}</span><span class="cond-preview">${escHtml(b.preview)}</span></div>`
-      ).join('')
+    let branchesHtml = p.conditions.map((cBlock, ci) =>
+      cBlock.branches.map((b, bi) => {
+        const bid = condId + '_' + ci + '_' + bi;
+        const summary = escHtml(b.summary || b.preview || (b.text || '').substring(0, 80));
+        const hasFullText = b.text && b.text.length > (b.summary || '').length + 10;
+        const fullTextBtn = hasFullText ? ` <span style="color:var(--accent);font-size:10px;cursor:pointer" onclick="event.stopPropagation();toggleFullText('${bid}')">▼ 展開</span>` : '';
+        const fullText = hasFullText ? `<div class="cond-full-text" id="ft_${bid}">${formatText(b.text)}</div>` : '';
+        const nestedHtml = b.nested ? renderNestedConds(b.nested, bid) : '';
+        return `<div class="cond-branch">
+          <span class="cond-expr">${escHtml(b.cond)}</span>
+          <span class="cond-summary">${summary}${fullTextBtn}</span>
+          ${fullText}${nestedHtml}
+        </div>`;
+      }).join('')
     ).join('');
     condHtml = `<div class="passage-conditions">
       <span class="cond-toggle" onclick="toggleCond('${condId}')"><span class="cond-arrow" id="arr_${condId}">▶</span> 條件分支 (${totalBranches} 種)</span>
       <div class="cond-branches" id="${condId}">${branchesHtml}</div>
     </div>`;
+  }
+
+  // --- CG Layer Compositor ---
+  let cgHtml = '';
+  if (showImg && p.images && p.images.cg_scenes && CG_MANIFEST) {
+    cgHtml = p.images.cg_scenes.map(sceneKey => {
+      const scene = CG_MANIFEST.scenes[sceneKey];
+      if (!scene) return '';
+      return `<div class="cg-compositor" data-scene="${escAttr(sceneKey)}"></div>`;
+    }).join('');
   }
 
   return `<div class="passage" data-passage-name="${escAttr(p.name || '')}">
@@ -930,7 +1010,7 @@ function passageHtml(p, idx) {
       ${charHtml}
       ${pid}
     </div>
-    ${pname}${tags}${varChangesHtml}${textHtml}${choicesHtml}${condHtml}
+    ${pname}${tags}${varChangesHtml}${textHtml}${cgHtml}${choicesHtml}${condHtml}
   </div>`;
 }
 
@@ -962,6 +1042,9 @@ function closeLightbox() {
   const lb = document.getElementById('lightbox');
   lb.classList.remove('open');
   document.getElementById('lightboxImg').src = '';
+  document.getElementById('lightboxImg').style.display = '';
+  const comp = document.getElementById('lightboxCompositor');
+  if (comp) { comp.style.display = 'none'; comp.innerHTML = ''; }
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => {
@@ -993,6 +1076,185 @@ function toggleCond(id) {
     const open = el.classList.toggle('open');
     if (arr) arr.classList.toggle('open', open);
   }
+}
+
+// === Full Text Toggle (for condition branches) ===
+function toggleFullText(bid) {
+  const el = document.getElementById('ft_' + bid);
+  if (!el) return;
+  el.classList.toggle('open');
+}
+
+// === Nested Conditions Renderer ===
+function renderNestedConds(nested, parentId) {
+  if (!nested || nested.length === 0) return '';
+  return nested.map((cBlock, ci) => {
+    const items = cBlock.branches.map((b, bi) => {
+      const nid = parentId + '_n' + ci + '_' + bi;
+      const summary = escHtml(b.summary || b.preview || (b.text || '').substring(0, 80));
+      const hasFullText = b.text && b.text.length > (b.summary || '').length + 10;
+      const fullTextBtn = hasFullText ? ` <span style="color:var(--accent);font-size:10px;cursor:pointer" onclick="event.stopPropagation();toggleFullText('${nid}')">▼</span>` : '';
+      const fullText = hasFullText ? `<div class="cond-full-text" id="ft_${nid}">${formatText(b.text)}</div>` : '';
+      const deepNested = b.nested ? renderNestedConds(b.nested, nid) : '';
+      return `<div class="cond-branch">
+        <span class="cond-expr">${escHtml(b.cond)}</span>
+        <span class="cond-summary">${summary}${fullTextBtn}</span>
+        ${fullText}${deepNested}
+      </div>`;
+    }).join('');
+    return `<div class="cond-nested">${items}</div>`;
+  }).join('');
+}
+
+// === CG Layer Compositor ===
+let CG_MANIFEST = null;
+
+async function loadCgManifest() {
+  try {
+    const resp = await fetch('data/cg_manifest.json?v=1');
+    CG_MANIFEST = await resp.json();
+    console.log('[CG] Manifest loaded:', Object.keys(CG_MANIFEST.scenes || {}).length, 'scenes');
+  } catch(e) {
+    console.warn('[CG] Manifest not available:', e);
+  }
+}
+
+function initCompositors() {
+  document.querySelectorAll('.cg-compositor[data-scene]').forEach(el => {
+    const sceneKey = el.dataset.scene;
+    if (!CG_MANIFEST || !CG_MANIFEST.scenes[sceneKey]) return;
+    if (el.dataset.initialized) return;
+    el.dataset.initialized = '1';
+    renderCgCompositor(sceneKey, el);
+  });
+}
+
+function renderCgCompositor(sceneKey, container) {
+  const scene = CG_MANIFEST.scenes[sceneKey];
+  if (!scene) return;
+
+  const variants = scene.variants || [];
+  let currentVariant = 0;
+  const currentVars = {};
+
+  // Initialize control values
+  variants.forEach(v => {
+    (v.controls || []).forEach(c => {
+      currentVars[c.var] = c.default !== undefined ? c.default : (c.min || 0);
+    });
+  });
+
+  function buildLayers() {
+    const v = variants[currentVariant];
+    if (!v) return '';
+    return v.layers.map((l, i) => {
+      const visible = layerVisible(l, currentVars);
+      return `<img class="cg-layer" src="${l.url}" data-idx="${i}" style="display:${visible ? '' : 'none'}" loading="lazy" onerror="this.style.display='none'">`;
+    }).join('');
+  }
+
+  function buildControls() {
+    const v = variants[currentVariant];
+    if (!v || !v.controls || v.controls.length === 0) return '';
+    return `<div class="cg-controls">
+      <div class="cg-controls-title">🎛️ 調整數值查看不同表情/外觀</div>
+      ${v.controls.map(c => {
+        if (c.type === 'boolean') {
+          const checked = currentVars[c.var] ? 'checked' : '';
+          return `<div class="cg-control-row">
+            <label>${escHtml(c.label_zh)}</label>
+            <input type="checkbox" ${checked} data-var="${escAttr(c.var)}" data-scene="${escAttr(sceneKey)}">
+            <span class="cg-val">${currentVars[c.var] ? '是' : '否'}</span>
+          </div>`;
+        } else {
+          return `<div class="cg-control-row">
+            <label>${escHtml(c.label_zh)}</label>
+            <input type="range" min="${c.min}" max="${c.max}" value="${currentVars[c.var]}" data-var="${escAttr(c.var)}" data-scene="${escAttr(sceneKey)}">
+            <span class="cg-val">${currentVars[c.var]}</span>
+          </div>`;
+        }
+      }).join('')}
+    </div>`;
+  }
+
+  function buildVariantTabs() {
+    if (variants.length <= 1) return '';
+    return `<div class="cg-variant-tabs">
+      ${variants.map((v, i) =>
+        `<button class="${i === currentVariant ? 'active' : ''}" data-vi="${i}" data-scene="${escAttr(sceneKey)}">${escHtml(v.variant_zh || v.variant_name)}</button>`
+      ).join('')}
+    </div>`;
+  }
+
+  function render() {
+    container.innerHTML = `
+      <div class="cg-canvas-wrap" onclick="openCgLightbox('${escAttr(sceneKey)}')">
+        <div class="cg-canvas">${buildLayers()}</div>
+      </div>
+      ${buildControls()}
+      ${buildVariantTabs()}
+    `;
+    // Bind events
+    container.querySelectorAll('input[type=range]').forEach(inp => {
+      inp.addEventListener('input', () => {
+        currentVars[inp.dataset.var] = parseInt(inp.value);
+        inp.nextElementSibling.textContent = inp.value;
+        updateLayerVisibility();
+      });
+    });
+    container.querySelectorAll('input[type=checkbox]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        currentVars[inp.dataset.var] = inp.checked;
+        inp.nextElementSibling.textContent = inp.checked ? '是' : '否';
+        updateLayerVisibility();
+      });
+    });
+    container.querySelectorAll('.cg-variant-tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentVariant = parseInt(btn.dataset.vi);
+        render();
+      });
+    });
+  }
+
+  function updateLayerVisibility() {
+    const v = variants[currentVariant];
+    if (!v) return;
+    const imgs = container.querySelectorAll('.cg-layer');
+    v.layers.forEach((l, i) => {
+      if (imgs[i]) imgs[i].style.display = layerVisible(l, currentVars) ? '' : 'none';
+    });
+  }
+
+  render();
+}
+
+function layerVisible(layer, vars) {
+  if (!layer.condition) return true; // unconditional layer always visible
+  const varVal = vars[layer.condition];
+  const req = layer.requirement;
+  if (typeof req === 'boolean') return varVal === req;
+  return varVal === req;
+}
+
+// === CG Lightbox ===
+function openCgLightbox(sceneKey) {
+  if (!CG_MANIFEST || !CG_MANIFEST.scenes[sceneKey]) return;
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  const comp = document.getElementById('lightboxCompositor');
+  img.style.display = 'none';
+  comp.style.display = 'block';
+  comp.innerHTML = '';
+  const fullComp = document.createElement('div');
+  fullComp.className = 'cg-compositor';
+  fullComp.dataset.scene = sceneKey;
+  fullComp.style.maxWidth = '90vw';
+  fullComp.style.maxHeight = '85vh';
+  comp.appendChild(fullComp);
+  renderCgCompositor(sceneKey, fullComp);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 // === Navigate to Passage ===
@@ -1243,6 +1505,8 @@ function renderPassageChunked(container, passages, startIdx) {
     html += passageHtml(passages[i], i);
   }
   container.insertAdjacentHTML('beforeend', html);
+  // Initialize CG compositors for newly rendered passages
+  requestAnimationFrame(initCompositors);
 
   if (end < passages.length) {
     const sentinel = document.createElement('div');

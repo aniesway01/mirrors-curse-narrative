@@ -1,0 +1,2711 @@
+{
+  "generated": "2026-02-25",
+  "source": "A Mirror's Curse 0.29.1/index.html (gallery passage)",
+  "stats": {
+    "total_scenes": 20,
+    "total_variants": 25,
+    "total_layers": 300,
+    "total_controls": 57,
+    "missing_files": 4
+  },
+  "scenes": {
+    "LukeMeeting": {
+      "id": "cg-gallery-luke-meeting",
+      "title": "Luke Meeting",
+      "title_zh": "Luke 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/lukeMeeting/lukeMeetingbase.png",
+              "url": "images/cg_layers/lukeMeeting/lukeMeetingbase.webp",
+              "_source": "img/CGs/lukeMeeting/lukeMeetingbase.png"
+            }
+          ],
+          "controls": []
+        }
+      ]
+    },
+    "SamanthaMeeting": {
+      "id": "cg-gallery-samantha-meeting",
+      "title": "Samantha Meeting",
+      "title_zh": "Samantha 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/samanthaMeeting/samanthaMeetingbase.png",
+              "url": "images/cg_layers/samanthaMeeting/samanthaMeetingbase.webp",
+              "_source": "img/CGs/samanthaMeeting/samanthaMeetingbase.png"
+            }
+          ],
+          "controls": []
+        }
+      ]
+    },
+    "SerenaMeeting": {
+      "id": "cg-gallery-serena-meeting",
+      "title": "Serena Meeting",
+      "title_zh": "Serena 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/serenaMeeting/serenaMeeting.png",
+              "url": "images/cg_layers/serenaMeeting/serenaMeeting.webp",
+              "_source": "img/CGs/serenaMeeting/serenaMeeting.png"
+            }
+          ],
+          "controls": []
+        }
+      ]
+    },
+    "JessicaMeeting": {
+      "id": "cg-gallery-jessica-meeting",
+      "title": "Jessica Meeting",
+      "title_zh": "Jessica 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/jessicaMeeting/jessicaMeetingbase.png",
+              "url": "images/cg_layers/jessicaMeeting/jessicaMeetingbase.webp",
+              "_source": "img/CGs/jessicaMeeting/jessicaMeetingbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jessicaMeeting/jessicaMeetingmhair.png",
+              "condition": "$jessicaCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/jessicaMeeting/jessicaMeetingmhair.webp",
+              "_source": "img/CGs/jessicaMeeting/jessicaMeetingmhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jessicaMeeting/jessicaMeetinglhair.png",
+              "condition": "$jessicaCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/jessicaMeeting/jessicaMeetinglhair.webp",
+              "_source": "img/CGs/jessicaMeeting/jessicaMeetinglhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jessicaMeeting/jessicaMeetingmeyes.png",
+              "condition": "$jessicaCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/jessicaMeeting/jessicaMeetingmeyes.webp",
+              "_source": "img/CGs/jessicaMeeting/jessicaMeetingmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jessicaMeeting/jessicaMeetingleyes.png",
+              "condition": "$jessicaCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/jessicaMeeting/jessicaMeetingleyes.webp",
+              "_source": "img/CGs/jessicaMeeting/jessicaMeetingleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jessicaMeeting/jessicaMeetingleyes.png",
+              "condition": "$jessicaCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/jessicaMeeting/jessicaMeetingleyes.webp",
+              "_source": "img/CGs/jessicaMeeting/jessicaMeetingleyes.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$jessicaCGeyes",
+              "label_zh": "Jessica 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$jessicaCGhair",
+              "label_zh": "Jessica 髮型",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            }
+          ]
+        }
+      ]
+    },
+    "VincentMeeting": {
+      "id": "cg-gallery-vincent-meeting",
+      "title": "Vincent Meeting",
+      "title_zh": "Vincent 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/vincentMeeting/vincentMeetingbase.png",
+              "url": "images/cg_layers/vincentMeeting/vincentMeetingbase.webp",
+              "_source": "img/CGs/vincentMeeting/vincentMeetingbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/vincentMeeting/vincentMeetingmhair.png",
+              "condition": "$hairProg",
+              "requirement": 2,
+              "url": "images/cg_layers/vincentMeeting/vincentMeetingmhair.webp",
+              "_source": "img/CGs/vincentMeeting/vincentMeetingmhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/vincentMeeting/vincentMeetinglhair.png",
+              "condition": "$hairProg",
+              "requirement": 3,
+              "url": "images/cg_layers/vincentMeeting/vincentMeetinglhair.webp",
+              "_source": "img/CGs/vincentMeeting/vincentMeetinglhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/vincentMeeting/vincentMeetingmeyes.png",
+              "condition": "$eyesProg",
+              "requirement": 1,
+              "url": "images/cg_layers/vincentMeeting/vincentMeetingmeyes.webp",
+              "_source": "img/CGs/vincentMeeting/vincentMeetingmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/vincentMeeting/vincentMeetingleyes.png",
+              "condition": "$eyesProg",
+              "requirement": 2,
+              "url": "images/cg_layers/vincentMeeting/vincentMeetingleyes.webp",
+              "_source": "img/CGs/vincentMeeting/vincentMeetingleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/vincentMeeting/vincentMeetingleyes.png",
+              "condition": "$eyesProg",
+              "requirement": 3,
+              "url": "images/cg_layers/vincentMeeting/vincentMeetingleyes.webp",
+              "_source": "img/CGs/vincentMeeting/vincentMeetingleyes.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$eyesProg",
+              "label_zh": "eyesProg",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$hairProg",
+              "label_zh": "hairProg",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            }
+          ]
+        }
+      ]
+    },
+    "AuroraMeeting": {
+      "id": "cg-gallery-aurora-meeting",
+      "title": "Aurora Meeting",
+      "title_zh": "Aurora 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/auroraMeeting/auroraMeetingbase.png",
+              "url": "images/cg_layers/auroraMeeting/auroraMeetingbase.webp",
+              "_source": "img/CGs/auroraMeeting/auroraMeetingbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/auroraMeeting/auroraMeetingmhair.png",
+              "condition": "$auroraCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/auroraMeeting/auroraMeetingmhair.webp",
+              "_source": "img/CGs/auroraMeeting/auroraMeetingmhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/auroraMeeting/auroraMeetinglhair.png",
+              "condition": "$auroraCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/auroraMeeting/auroraMeetinglhair.webp",
+              "_source": "img/CGs/auroraMeeting/auroraMeetinglhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/auroraMeeting/auroraMeetingmeyes.png",
+              "condition": "$auroraCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/auroraMeeting/auroraMeetingmeyes.webp",
+              "_source": "img/CGs/auroraMeeting/auroraMeetingmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/auroraMeeting/auroraMeetingleyes.png",
+              "condition": "$auroraCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/auroraMeeting/auroraMeetingleyes.webp",
+              "_source": "img/CGs/auroraMeeting/auroraMeetingleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/auroraMeeting/auroraMeetingleyes.png",
+              "condition": "$auroraCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/auroraMeeting/auroraMeetingleyes.webp",
+              "_source": "img/CGs/auroraMeeting/auroraMeetingleyes.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$auroraCGeyes",
+              "label_zh": "Aurora 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$auroraCGhair",
+              "label_zh": "Aurora 髮型",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            }
+          ]
+        }
+      ]
+    },
+    "JordanMeeting": {
+      "id": "cg-gallery-jordan-meeting",
+      "title": "Jordan Meeting",
+      "title_zh": "Jordan 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/jordanMeeting/jordanMeetingbase.png",
+              "url": "images/cg_layers/jordanMeeting/jordanMeetingbase.webp",
+              "_source": "img/CGs/jordanMeeting/jordanMeetingbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jordanMeeting/jordanMeetingmhair.png",
+              "condition": "$hairProg",
+              "requirement": 2,
+              "url": "images/cg_layers/jordanMeeting/jordanMeetingmhair.webp",
+              "_source": "img/CGs/jordanMeeting/jordanMeetingmhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jordanMeeting/jordanMeetinglhair.png",
+              "condition": "$hairProg",
+              "requirement": 3,
+              "url": "images/cg_layers/jordanMeeting/jordanMeetinglhair.webp",
+              "_source": "img/CGs/jordanMeeting/jordanMeetinglhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jordanMeeting/jordanMeetingmeyes.png",
+              "condition": "$eyesProg",
+              "requirement": 1,
+              "url": "images/cg_layers/jordanMeeting/jordanMeetingmeyes.webp",
+              "_source": "img/CGs/jordanMeeting/jordanMeetingmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jordanMeeting/jordanMeetingleyes.png",
+              "condition": "$eyesProg",
+              "requirement": 2,
+              "url": "images/cg_layers/jordanMeeting/jordanMeetingleyes.webp",
+              "_source": "img/CGs/jordanMeeting/jordanMeetingleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/jordanMeeting/jordanMeetingleyes.png",
+              "condition": "$eyesProg",
+              "requirement": 3,
+              "url": "images/cg_layers/jordanMeeting/jordanMeetingleyes.webp",
+              "_source": "img/CGs/jordanMeeting/jordanMeetingleyes.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$eyesProg",
+              "label_zh": "eyesProg",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$hairProg",
+              "label_zh": "hairProg",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            }
+          ]
+        }
+      ]
+    },
+    "LilyHairtie": {
+      "id": "cg-gallery-lily-hairtie",
+      "title": "Lily Hairtie",
+      "title_zh": "Lily 綁頭髮",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtiebase.png",
+              "url": "images/cg_layers/lilyHairtie/lilyHairtiebase.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtiebase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtiemhair.png",
+              "condition": "$lilyCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/lilyHairtie/lilyHairtiemhair.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtiemhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtielhair.png",
+              "condition": "$lilyCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/lilyHairtie/lilyHairtielhair.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtielhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtiemeyes.png",
+              "condition": "$lilyCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/lilyHairtie/lilyHairtiemeyes.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtiemeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtieleyes.png",
+              "condition": "$lilyCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/lilyHairtie/lilyHairtieleyes.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtieleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtieleyes.png",
+              "condition": "$lilyCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/lilyHairtie/lilyHairtieleyes.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtieleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtiefilter0.png",
+              "url": "images/cg_layers/lilyHairtie/lilyHairtiefilter0.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtiefilter0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/lilyHairtie/lilyHairtiefilter1.png",
+              "url": "images/cg_layers/lilyHairtie/lilyHairtiefilter1.webp",
+              "_source": "img/CGs/lilyHairtie/lilyHairtiefilter1.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$lilyCGeyes",
+              "label_zh": "Lily 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$lilyCGhair",
+              "label_zh": "Lily 髮型",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            }
+          ]
+        }
+      ]
+    },
+    "SerenaEvaluation": {
+      "id": "cg-gallery-serena-evaluation",
+      "title": "Serena Evaluation",
+      "title_zh": "Serena 評估",
+      "variants": [
+        {
+          "variant_name": "loose_hair",
+          "variant_zh": "散髮",
+          "condition": "$serenaCGhairStyle is 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationbase.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationbase.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmadameserena.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmadameserena.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmadameserena.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationethan.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationethan.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationsbreasts.png",
+              "condition": "$serenaCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationsbreasts.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationsbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmbreasts.png",
+              "condition": "$serenaCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmbreasts.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationshair.png",
+              "condition": "$serenaCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationshair.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationshair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationshair.png",
+              "condition": "$serenaCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationshair.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationshair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmhair.png",
+              "condition": "$serenaCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmhair.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationlhair.png",
+              "condition": "$serenaCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationlhair.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationlhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmeyes.png",
+              "condition": "$serenaCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmeyes.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png",
+              "condition": "$serenaCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationleyes.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png",
+              "condition": "$serenaCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationleyes.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationfilter.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationfilter.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationfilter.png"
+            },
+            {
+              "sourceUrl": "img/additional/watermark.png",
+              "url": "images/cg_layers/img/additional/watermark.webp",
+              "_source": "img/additional/watermark.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$serenaCGbreasts",
+              "label_zh": "Serena 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$serenaCGeyes",
+              "label_zh": "Serena 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$serenaCGhair",
+              "label_zh": "Serena 髮型",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            }
+          ]
+        },
+        {
+          "variant_name": "ponytail",
+          "variant_zh": "馬尾",
+          "condition": "$serenaCGhairStyle is not 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationbase.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationbase.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmadameserena.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmadameserena.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmadameserena.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmponyttail.png",
+              "condition": "$serenaCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmponyttail.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmponyttail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationlponyttail.png",
+              "condition": "$serenaCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationlponyttail.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationlponyttail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationhairtie1.png",
+              "condition": "$serenaCGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationhairtie1.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationhairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationhairtie2.png",
+              "condition": "$serenaCGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationhairtie2.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationhairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationhairtie3.png",
+              "condition": "$serenaCGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationhairtie3.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationhairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationhairtie4.png",
+              "condition": "$serenaCGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationhairtie4.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationhairtie4.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationethan.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationethan.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationsbreasts.png",
+              "condition": "$serenaCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationsbreasts.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationsbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmbreasts.png",
+              "condition": "$serenaCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmbreasts.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationmeyes.png",
+              "condition": "$serenaCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationmeyes.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png",
+              "condition": "$serenaCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationleyes.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png",
+              "condition": "$serenaCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationleyes.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationsidelock.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationsidelock.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationsidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/serenaEvaluation/serenaEvaluationfilter.png",
+              "url": "images/cg_layers/serenaEvaluation/serenaEvaluationfilter.webp",
+              "_source": "img/CGs/serenaEvaluation/serenaEvaluationfilter.png"
+            },
+            {
+              "sourceUrl": "img/additional/watermark.png",
+              "url": "images/cg_layers/img/additional/watermark.webp",
+              "_source": "img/additional/watermark.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$serenaCGbreasts",
+              "label_zh": "Serena 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$serenaCGeyes",
+              "label_zh": "Serena 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$serenaCGhair",
+              "label_zh": "Serena 髮型",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$serenaCGhairtie",
+              "label_zh": "Serena 髮帶",
+              "type": "number",
+              "min": 1,
+              "max": 4,
+              "default": 1
+            }
+          ]
+        }
+      ]
+    },
+    "DreamMeeting": {
+      "id": "cg-gallery-dream-meeting",
+      "title": "Dream Meeting",
+      "title_zh": "森林之夢",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/forestDream/forestDream.png",
+              "url": "images/cg_layers/forestDream/forestDream.webp",
+              "_source": "img/CGs/forestDream/forestDream.png"
+            }
+          ],
+          "controls": []
+        }
+      ]
+    },
+    "FirstM": {
+      "id": "cg-gallery-first-masturbation",
+      "title": "First Masturbation",
+      "title_zh": "首次自慰",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/bg/bg0.png",
+              "url": "images/cg_layers/firstMasturbation/bg/bg0.webp",
+              "_source": "img/CGs/firstMasturbation/bg/bg0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/body/baseBody.png",
+              "url": "images/cg_layers/firstMasturbation/body/baseBody.webp",
+              "_source": "img/CGs/firstMasturbation/body/baseBody.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/legs/legs0.png",
+              "url": "images/cg_layers/firstMasturbation/legs/legs0.webp",
+              "_source": "img/CGs/firstMasturbation/legs/legs0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/penis/pubic.png",
+              "condition": "$d7shave",
+              "requirement": false,
+              "url": "images/cg_layers/firstMasturbation/penis/pubic.webp",
+              "_source": "img/CGs/firstMasturbation/penis/pubic.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/penis/penis0.png",
+              "url": "images/cg_layers/firstMasturbation/penis/penis0.webp",
+              "_source": "img/CGs/firstMasturbation/penis/penis0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/chest/chest1.png",
+              "condition": "$d8breastsProg",
+              "requirement": 2,
+              "url": "images/cg_layers/firstMasturbation/chest/chest1.webp",
+              "_source": "img/CGs/firstMasturbation/chest/chest1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/chest/chest2.png",
+              "condition": "$d8breastsProg",
+              "requirement": 3,
+              "url": "images/cg_layers/firstMasturbation/chest/chest2.webp",
+              "_source": "img/CGs/firstMasturbation/chest/chest2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/larm/larm1.png",
+              "url": "images/cg_layers/firstMasturbation/larm/larm1.webp",
+              "_source": "img/CGs/firstMasturbation/larm/larm1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/rarm/rarm0.png",
+              "url": "images/cg_layers/firstMasturbation/rarm/rarm0.webp",
+              "_source": "img/CGs/firstMasturbation/rarm/rarm0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/mouth/mouth1.png",
+              "url": "images/cg_layers/firstMasturbation/mouth/mouth1.webp",
+              "_source": "img/CGs/firstMasturbation/mouth/mouth1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/eyes/eyes0.png",
+              "condition": "$d8eyesProg",
+              "requirement": 1,
+              "url": "images/cg_layers/firstMasturbation/eyes/eyes0.webp",
+              "_source": "img/CGs/firstMasturbation/eyes/eyes0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/eyes/eyes1.png",
+              "condition": "$d8eyesProg",
+              "requirement": 2,
+              "url": "images/cg_layers/firstMasturbation/eyes/eyes1.webp",
+              "_source": "img/CGs/firstMasturbation/eyes/eyes1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/eyes/eyes1.png",
+              "condition": "$d8eyesProg",
+              "requirement": 3,
+              "url": "images/cg_layers/firstMasturbation/eyes/eyes1.webp",
+              "_source": "img/CGs/firstMasturbation/eyes/eyes1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/hair/hair0.png",
+              "condition": "$d8hairProg",
+              "requirement": 0,
+              "url": "images/cg_layers/firstMasturbation/hair/hair0.webp",
+              "_source": "img/CGs/firstMasturbation/hair/hair0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/hair/hair0.png",
+              "condition": "$d8hairProg",
+              "requirement": 1,
+              "url": "images/cg_layers/firstMasturbation/hair/hair0.webp",
+              "_source": "img/CGs/firstMasturbation/hair/hair0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/hair/hair1.png",
+              "condition": "$d8hairProg",
+              "requirement": 2,
+              "url": "images/cg_layers/firstMasturbation/hair/hair1.webp",
+              "_source": "img/CGs/firstMasturbation/hair/hair1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/hair/hair2.png",
+              "condition": "$d8hairProg",
+              "requirement": 3,
+              "url": "images/cg_layers/firstMasturbation/hair/hair2.webp",
+              "_source": "img/CGs/firstMasturbation/hair/hair2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/eyebrow/eyebrow0.png",
+              "url": "images/cg_layers/firstMasturbation/eyebrow/eyebrow0.webp",
+              "_source": "img/CGs/firstMasturbation/eyebrow/eyebrow0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/additional/sweat.png",
+              "url": "images/cg_layers/firstMasturbation/additional/sweat.webp",
+              "_source": "img/CGs/firstMasturbation/additional/sweat.png"
+            },
+            {
+              "sourceUrl": "img/CGs/firstMasturbation/additional/cum1.png",
+              "url": "images/cg_layers/firstMasturbation/additional/cum1.webp",
+              "_source": "img/CGs/firstMasturbation/additional/cum1.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$d7shave",
+              "label_zh": "刮除",
+              "type": "boolean",
+              "values": [
+                false,
+                true
+              ],
+              "default": false
+            },
+            {
+              "var": "$d8breastsProg",
+              "label_zh": "胸部變化",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$d8eyesProg",
+              "label_zh": "眼睛變化",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$d8hairProg",
+              "label_zh": "頭髮變化",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            }
+          ]
+        }
+      ]
+    },
+    "Improv": {
+      "id": "cg-gallery-improv",
+      "title": "First Improvisation",
+      "title_zh": "首次即興表演",
+      "variants": [
+        {
+          "variant_name": "loose_hair",
+          "variant_zh": "散髮",
+          "condition": "$improvCGhairStyle is 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/improv/improvbase.png",
+              "url": "images/cg_layers/improv/improvbase.webp",
+              "_source": "img/CGs/improv/improvbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvjordan.png",
+              "url": "images/cg_layers/improv/improvjordan.webp",
+              "_source": "img/CGs/improv/improvjordan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvethan.png",
+              "url": "images/cg_layers/improv/improvethan.webp",
+              "_source": "img/CGs/improv/improvethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvsbreasts.png",
+              "condition": "$improvCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/improv/improvsbreasts.webp",
+              "_source": "img/CGs/improv/improvsbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvmbreasts.png",
+              "condition": "$improvCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/improv/improvmbreasts.webp",
+              "_source": "img/CGs/improv/improvmbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvshair.png",
+              "condition": "$improvCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/improv/improvshair.webp",
+              "_source": "img/CGs/improv/improvshair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvshair.png",
+              "condition": "$improvCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/improv/improvshair.webp",
+              "_source": "img/CGs/improv/improvshair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvmhair.png",
+              "condition": "$improvCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/improv/improvmhair.webp",
+              "_source": "img/CGs/improv/improvmhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvlhair.png",
+              "condition": "$improvCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/improv/improvlhair.webp",
+              "_source": "img/CGs/improv/improvlhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvbangs.png",
+              "url": "images/cg_layers/improv/improvbangs.webp",
+              "_source": "img/CGs/improv/improvbangs.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvmeyes.png",
+              "condition": "$improvCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/improv/improvmeyes.webp",
+              "_source": "img/CGs/improv/improvmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvleyes.png",
+              "condition": "$improvCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/improv/improvleyes.webp",
+              "_source": "img/CGs/improv/improvleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvleyes.png",
+              "condition": "$improvCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/improv/improvleyes.webp",
+              "_source": "img/CGs/improv/improvleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvfilter.png",
+              "url": "images/cg_layers/improv/improvfilter.webp",
+              "_source": "img/CGs/improv/improvfilter.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$improvCGbreasts",
+              "label_zh": "即興 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$improvCGeyes",
+              "label_zh": "即興 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$improvCGhair",
+              "label_zh": "即興 髮型",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            }
+          ]
+        },
+        {
+          "variant_name": "ponytail",
+          "variant_zh": "馬尾",
+          "condition": "$improvCGhairStyle is not 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/improv/improvbase.png",
+              "url": "images/cg_layers/improv/improvbase.webp",
+              "_source": "img/CGs/improv/improvbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvjordan.png",
+              "url": "images/cg_layers/improv/improvjordan.webp",
+              "_source": "img/CGs/improv/improvjordan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvethan.png",
+              "url": "images/cg_layers/improv/improvethan.webp",
+              "_source": "img/CGs/improv/improvethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvmponytail.png",
+              "condition": "$improvCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/improv/improvmponytail.webp",
+              "_source": "img/CGs/improv/improvmponytail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvlponytail.png",
+              "condition": "$improvCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/improv/improvlponytail.webp",
+              "_source": "img/CGs/improv/improvlponytail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvhairtie1.png",
+              "condition": "$improvCGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/improv/improvhairtie1.webp",
+              "_source": "img/CGs/improv/improvhairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvhairtie2.png",
+              "condition": "$improvCGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/improv/improvhairtie2.webp",
+              "_source": "img/CGs/improv/improvhairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvhairtie3.png",
+              "condition": "$improvCGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/improv/improvhairtie3.webp",
+              "_source": "img/CGs/improv/improvhairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvhairtie4.png",
+              "condition": "$improvCGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/improv/improvhairtie4.webp",
+              "_source": "img/CGs/improv/improvhairtie4.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvsbreasts.png",
+              "condition": "$improvCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/improv/improvsbreasts.webp",
+              "_source": "img/CGs/improv/improvsbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvmbreasts.png",
+              "condition": "$improvCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/improv/improvmbreasts.webp",
+              "_source": "img/CGs/improv/improvmbreasts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvbangs.png",
+              "url": "images/cg_layers/improv/improvbangs.webp",
+              "_source": "img/CGs/improv/improvbangs.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvmeyes.png",
+              "condition": "$improvCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/improv/improvmeyes.webp",
+              "_source": "img/CGs/improv/improvmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvleyes.png",
+              "condition": "$improvCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/improv/improvleyes.webp",
+              "_source": "img/CGs/improv/improvleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvleyes.png",
+              "condition": "$improvCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/improv/improvleyes.webp",
+              "_source": "img/CGs/improv/improvleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvsidelock.png",
+              "url": "images/cg_layers/improv/improvsidelock.webp",
+              "_source": "img/CGs/improv/improvsidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/improv/improvfilter.png",
+              "url": "images/cg_layers/improv/improvfilter.webp",
+              "_source": "img/CGs/improv/improvfilter.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$improvCGbreasts",
+              "label_zh": "即興 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$improvCGeyes",
+              "label_zh": "即興 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$improvCGhair",
+              "label_zh": "即興 髮型",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$improvCGhairtie",
+              "label_zh": "即興 髮帶",
+              "type": "number",
+              "min": 1,
+              "max": 4,
+              "default": 1
+            }
+          ]
+        }
+      ]
+    },
+    "JessicaDiner": {
+      "id": "cg-gallery-jessica-diner",
+      "title": "Jessica Diner",
+      "title_zh": "Jessica 餐廳",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/jessicaDiner/jessicaDiner.png",
+              "url": "images/cg_layers/jessicaDiner/jessicaDiner.webp",
+              "_source": "img/CGs/jessicaDiner/jessicaDiner.png"
+            }
+          ],
+          "controls": []
+        }
+      ]
+    },
+    "gameday1": {
+      "id": "cg-gallery-gameday1",
+      "title": "Game Day 1 - Victory",
+      "title_zh": "Game Day 1 - Victory",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1base.png",
+              "url": "images/cg_layers/gameday1/gameday1base.webp",
+              "_source": "img/CGs/gameday1/gameday1base.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1bgcharacters.png",
+              "url": "images/cg_layers/gameday1/gameday1bgcharacters.webp",
+              "_source": "img/CGs/gameday1/gameday1bgcharacters.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1jessica.png",
+              "url": "images/cg_layers/gameday1/gameday1jessica.webp",
+              "_source": "img/CGs/gameday1/gameday1jessica.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1ethan.png",
+              "url": "images/cg_layers/gameday1/gameday1ethan.webp",
+              "_source": "img/CGs/gameday1/gameday1ethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1schest.png",
+              "condition": "$gameday1CGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/gameday1/gameday1schest.webp",
+              "_source": "img/CGs/gameday1/gameday1schest.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1mchest.png",
+              "condition": "$gameday1CGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/gameday1/gameday1mchest.webp",
+              "_source": "img/CGs/gameday1/gameday1mchest.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1skirt.png",
+              "condition": "$d11skirt",
+              "requirement": true,
+              "url": "images/cg_layers/gameday1/gameday1skirt.webp",
+              "_source": "img/CGs/gameday1/gameday1skirt.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1shorts.png",
+              "condition": "$d11skirt",
+              "requirement": false,
+              "url": "images/cg_layers/gameday1/gameday1shorts.webp",
+              "_source": "img/CGs/gameday1/gameday1shorts.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1expression.png",
+              "url": "images/cg_layers/gameday1/gameday1expression.webp",
+              "_source": "img/CGs/gameday1/gameday1expression.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1meyes.png",
+              "condition": "$gameday1CGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/gameday1/gameday1meyes.webp",
+              "_source": "img/CGs/gameday1/gameday1meyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1leyes.png",
+              "condition": "$gameday1CGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/gameday1/gameday1leyes.webp",
+              "_source": "img/CGs/gameday1/gameday1leyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1leyes.png",
+              "condition": "$gameday1CGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/gameday1/gameday1leyes.webp",
+              "_source": "img/CGs/gameday1/gameday1leyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1shair.png",
+              "condition": "$gameday1CGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/gameday1/gameday1shair.webp",
+              "_source": "img/CGs/gameday1/gameday1shair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1shair.png",
+              "condition": "$gameday1CGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/gameday1/gameday1shair.webp",
+              "_source": "img/CGs/gameday1/gameday1shair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1mhair.png",
+              "condition": "$gameday1CGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/gameday1/gameday1mhair.webp",
+              "_source": "img/CGs/gameday1/gameday1mhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1lhair.png",
+              "condition": "$gameday1CGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/gameday1/gameday1lhair.webp",
+              "_source": "img/CGs/gameday1/gameday1lhair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1hairtie1.png",
+              "condition": "$gameday1CGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/gameday1/gameday1hairtie1.webp",
+              "_source": "img/CGs/gameday1/gameday1hairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1hairtie2.png",
+              "condition": "$gameday1CGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/gameday1/gameday1hairtie2.webp",
+              "_source": "img/CGs/gameday1/gameday1hairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1hairtie3.png",
+              "condition": "$gameday1CGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/gameday1/gameday1hairtie3.webp",
+              "_source": "img/CGs/gameday1/gameday1hairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1hairtie4.png",
+              "condition": "$gameday1CGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/gameday1/gameday1hairtie4.webp",
+              "_source": "img/CGs/gameday1/gameday1hairtie4.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1jessicahand.png",
+              "url": "images/cg_layers/gameday1/gameday1jessicahand.webp",
+              "_source": "img/CGs/gameday1/gameday1jessicahand.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1extras.png",
+              "url": "images/cg_layers/gameday1/gameday1extras.webp",
+              "_source": "img/CGs/gameday1/gameday1extras.png"
+            },
+            {
+              "sourceUrl": "img/CGs/gameday1/gameday1confetti.png",
+              "url": "images/cg_layers/gameday1/gameday1confetti.webp",
+              "_source": "img/CGs/gameday1/gameday1confetti.png"
+            },
+            {
+              "sourceUrl": "img/additional/watermark.png",
+              "url": "images/cg_layers/img/additional/watermark.webp",
+              "_source": "img/additional/watermark.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$d11skirt",
+              "label_zh": "d11skirt",
+              "type": "boolean",
+              "values": [
+                false,
+                true
+              ],
+              "default": false
+            },
+            {
+              "var": "$gameday1CGbreasts",
+              "label_zh": "gameday1CGbreasts",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$gameday1CGeyes",
+              "label_zh": "比賽日 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$gameday1CGhair",
+              "label_zh": "比賽日 髮型",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            },
+            {
+              "var": "$gameday1CGhairtie",
+              "label_zh": "gameday1CGhairtie",
+              "type": "number",
+              "min": 1,
+              "max": 4,
+              "default": 1
+            }
+          ]
+        }
+      ]
+    },
+    "playground": {
+      "id": "cg-gallery-playground",
+      "title": "Nostalgic Playground",
+      "title_zh": "Nostalgic Playground",
+      "variants": [
+        {
+          "variant_name": "loose_hair",
+          "variant_zh": "散髮",
+          "condition": "$playgroundCGhairStyle is 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/playground/playgroundbase.png",
+              "url": "images/cg_layers/playground/playgroundbase.webp",
+              "_source": "img/CGs/playground/playgroundbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgrounddome.png",
+              "url": "images/cg_layers/playground/playgrounddome.webp",
+              "_source": "img/CGs/playground/playgrounddome.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundethan.png",
+              "url": "images/cg_layers/playground/playgroundethan.webp",
+              "_source": "img/CGs/playground/playgroundethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundschest.png",
+              "condition": "$playgroundCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundschest.webp",
+              "_source": "img/CGs/playground/playgroundschest.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmchest.png",
+              "condition": "$playgroundCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundmchest.webp",
+              "_source": "img/CGs/playground/playgroundmchest.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmeyes.png",
+              "condition": "$playgroundCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/playground/playgroundmeyes.webp",
+              "_source": "img/CGs/playground/playgroundmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundleyes.png",
+              "condition": "$playgroundCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundleyes.webp",
+              "_source": "img/CGs/playground/playgroundleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundleyes.png",
+              "condition": "$playgroundCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundleyes.webp",
+              "_source": "img/CGs/playground/playgroundleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundshair.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/playground/playgroundshair.webp",
+              "_source": "img/CGs/playground/playgroundshair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundshair.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/playground/playgroundshair.webp",
+              "_source": "img/CGs/playground/playgroundshair.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmhairloose.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundmhairloose.webp",
+              "_source": "img/CGs/playground/playgroundmhairloose.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundlhairloose.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundlhairloose.webp",
+              "_source": "img/CGs/playground/playgroundlhairloose.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie1.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/playground/playgroundhairtie1.webp",
+              "_source": "img/CGs/playground/playgroundhairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie2.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundhairtie2.webp",
+              "_source": "img/CGs/playground/playgroundhairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie3.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundhairtie3.webp",
+              "_source": "img/CGs/playground/playgroundhairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie4.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/playground/playgroundhairtie4.webp",
+              "_source": "img/CGs/playground/playgroundhairtie4.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmponytail.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundmponytail.webp",
+              "_source": "img/CGs/playground/playgroundmponytail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundlponytail.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundlponytail.webp",
+              "_source": "img/CGs/playground/playgroundlponytail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundluke.png",
+              "url": "images/cg_layers/playground/playgroundluke.webp",
+              "_source": "img/CGs/playground/playgroundluke.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundsamantha.png",
+              "url": "images/cg_layers/playground/playgroundsamantha.webp",
+              "_source": "img/CGs/playground/playgroundsamantha.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgrounddomeoverlay.png",
+              "url": "images/cg_layers/playground/playgrounddomeoverlay.webp",
+              "_source": "img/CGs/playground/playgrounddomeoverlay.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmemories.png",
+              "url": "images/cg_layers/playground/playgroundmemories.webp",
+              "_source": "img/CGs/playground/playgroundmemories.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundforeground.png",
+              "url": "images/cg_layers/playground/playgroundforeground.webp",
+              "_source": "img/CGs/playground/playgroundforeground.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundleaves.png",
+              "url": "images/cg_layers/playground/playgroundleaves.webp",
+              "_source": "img/CGs/playground/playgroundleaves.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundfilter1.png",
+              "url": "images/cg_layers/playground/playgroundfilter1.webp",
+              "_source": "img/CGs/playground/playgroundfilter1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundfilter2.png",
+              "url": "images/cg_layers/playground/playgroundfilter2.webp",
+              "_source": "img/CGs/playground/playgroundfilter2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundfilter3.png",
+              "url": "images/cg_layers/playground/playgroundfilter3.webp",
+              "_source": "img/CGs/playground/playgroundfilter3.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$playgroundCGbreasts",
+              "label_zh": "遊樂場 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$playgroundCGeyes",
+              "label_zh": "遊樂場 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$playgroundCGhair",
+              "label_zh": "遊樂場 髮型",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            },
+            {
+              "var": "$playgroundCGhairtie",
+              "label_zh": "遊樂場 髮帶",
+              "type": "number",
+              "min": 1,
+              "max": 4,
+              "default": 1
+            }
+          ]
+        },
+        {
+          "variant_name": "ponytail",
+          "variant_zh": "馬尾",
+          "condition": "$playgroundCGhairStyle is not 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/playground/playgroundbase.png",
+              "url": "images/cg_layers/playground/playgroundbase.webp",
+              "_source": "img/CGs/playground/playgroundbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgrounddome.png",
+              "url": "images/cg_layers/playground/playgrounddome.webp",
+              "_source": "img/CGs/playground/playgrounddome.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundethan.png",
+              "url": "images/cg_layers/playground/playgroundethan.webp",
+              "_source": "img/CGs/playground/playgroundethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundschest.png",
+              "condition": "$playgroundCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundschest.webp",
+              "_source": "img/CGs/playground/playgroundschest.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmchest.png",
+              "condition": "$playgroundCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundmchest.webp",
+              "_source": "img/CGs/playground/playgroundmchest.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmeyes.png",
+              "condition": "$playgroundCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/playground/playgroundmeyes.webp",
+              "_source": "img/CGs/playground/playgroundmeyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundleyes.png",
+              "condition": "$playgroundCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundleyes.webp",
+              "_source": "img/CGs/playground/playgroundleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundleyes.png",
+              "condition": "$playgroundCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundleyes.webp",
+              "_source": "img/CGs/playground/playgroundleyes.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundlhairtied.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundlhairtied.webp",
+              "_source": "img/CGs/playground/playgroundlhairtied.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundlhairtied.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundlhairtied.webp",
+              "_source": "img/CGs/playground/playgroundlhairtied.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie1.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/playground/playgroundhairtie1.webp",
+              "_source": "img/CGs/playground/playgroundhairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie2.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundhairtie2.webp",
+              "_source": "img/CGs/playground/playgroundhairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie3.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundhairtie3.webp",
+              "_source": "img/CGs/playground/playgroundhairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundhairtie4.png",
+              "condition": "$playgroundCGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/playground/playgroundhairtie4.webp",
+              "_source": "img/CGs/playground/playgroundhairtie4.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmponytail.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/playground/playgroundmponytail.webp",
+              "_source": "img/CGs/playground/playgroundmponytail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundlponytail.png",
+              "condition": "$playgroundCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/playground/playgroundlponytail.webp",
+              "_source": "img/CGs/playground/playgroundlponytail.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundluke.png",
+              "url": "images/cg_layers/playground/playgroundluke.webp",
+              "_source": "img/CGs/playground/playgroundluke.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundsamantha.png",
+              "url": "images/cg_layers/playground/playgroundsamantha.webp",
+              "_source": "img/CGs/playground/playgroundsamantha.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgrounddomeoverlay.png",
+              "url": "images/cg_layers/playground/playgrounddomeoverlay.webp",
+              "_source": "img/CGs/playground/playgrounddomeoverlay.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundmemories.png",
+              "url": "images/cg_layers/playground/playgroundmemories.webp",
+              "_source": "img/CGs/playground/playgroundmemories.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundforeground.png",
+              "url": "images/cg_layers/playground/playgroundforeground.webp",
+              "_source": "img/CGs/playground/playgroundforeground.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundleaves.png",
+              "url": "images/cg_layers/playground/playgroundleaves.webp",
+              "_source": "img/CGs/playground/playgroundleaves.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundfilter1.png",
+              "url": "images/cg_layers/playground/playgroundfilter1.webp",
+              "_source": "img/CGs/playground/playgroundfilter1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundfilter2.png",
+              "url": "images/cg_layers/playground/playgroundfilter2.webp",
+              "_source": "img/CGs/playground/playgroundfilter2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/playground/playgroundfilter3.png",
+              "url": "images/cg_layers/playground/playgroundfilter3.webp",
+              "_source": "img/CGs/playground/playgroundfilter3.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$playgroundCGbreasts",
+              "label_zh": "遊樂場 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$playgroundCGeyes",
+              "label_zh": "遊樂場 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$playgroundCGhair",
+              "label_zh": "遊樂場 髮型",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$playgroundCGhairtie",
+              "label_zh": "遊樂場 髮帶",
+              "type": "number",
+              "min": 1,
+              "max": 4,
+              "default": 1
+            }
+          ]
+        }
+      ]
+    },
+    "AuroraForest": {
+      "id": "cg-gallery-aurora-forest",
+      "title": "Aurora Forest",
+      "title_zh": "Aurora 森林",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/auroraForest/auroraForestbase.png",
+              "url": "images/cg_layers/auroraForest/auroraForestbase.webp",
+              "_source": "img/CGs/auroraForest/auroraForestbase.png"
+            }
+          ],
+          "controls": []
+        }
+      ]
+    },
+    "AmberMeeting": {
+      "id": "cg-gallery-amber-meeting",
+      "title": "Amber Meeting",
+      "title_zh": "Amber 相遇",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/amberMeeting/amberMeeting.png",
+              "url": "images/cg_layers/amberMeeting/amberMeeting.webp",
+              "_source": "img/CGs/amberMeeting/amberMeeting.png"
+            }
+          ],
+          "controls": []
+        }
+      ]
+    },
+    "SecondM": {
+      "id": "cg-gallery-second-masturbation",
+      "title": "Second Masturbation",
+      "title_zh": "第二次自慰",
+      "variants": [
+        {
+          "variant_name": "default",
+          "variant_zh": "預設",
+          "condition": null,
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/bg/bg.png",
+              "url": "images/cg_layers/secondMasturbation/bg/bg.webp",
+              "_source": "img/CGs/secondMasturbation/bg/bg.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/body/baseBody.png",
+              "url": "images/cg_layers/secondMasturbation/body/baseBody.webp",
+              "_source": "img/CGs/secondMasturbation/body/baseBody.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/eyes/eyes0.png",
+              "url": "images/cg_layers/secondMasturbation/eyes/eyes0.webp",
+              "_source": "img/CGs/secondMasturbation/eyes/eyes0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/mouth/mouth1.png",
+              "url": "images/cg_layers/secondMasturbation/mouth/mouth1.webp",
+              "_source": "img/CGs/secondMasturbation/mouth/mouth1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/additional/eyebrow.png",
+              "url": "images/cg_layers/secondMasturbation/additional/eyebrow.webp",
+              "_source": "img/CGs/secondMasturbation/additional/eyebrow.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/hair/hair0.png",
+              "condition": "$d13hair",
+              "requirement": 0,
+              "url": "images/cg_layers/secondMasturbation/hair/hair0.webp",
+              "_source": "img/CGs/secondMasturbation/hair/hair0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/hair/hair0.png",
+              "condition": "$d13hair",
+              "requirement": 1,
+              "url": "images/cg_layers/secondMasturbation/hair/hair0.webp",
+              "_source": "img/CGs/secondMasturbation/hair/hair0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/hair/hair1.png",
+              "condition": "$d13hair",
+              "requirement": 2,
+              "url": "images/cg_layers/secondMasturbation/hair/hair1.webp",
+              "_source": "img/CGs/secondMasturbation/hair/hair1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/hair/hair2.png",
+              "condition": "$d13hair",
+              "requirement": 3,
+              "url": "images/cg_layers/secondMasturbation/hair/hair2.webp",
+              "_source": "img/CGs/secondMasturbation/hair/hair2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/larm/larm1.png",
+              "url": "images/cg_layers/secondMasturbation/larm/larm1.webp",
+              "_source": "img/CGs/secondMasturbation/larm/larm1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/chest/chest0.png",
+              "condition": "$d13chest",
+              "requirement": 2,
+              "url": "images/cg_layers/secondMasturbation/chest/chest0.webp",
+              "_source": "img/CGs/secondMasturbation/chest/chest0.png"
+            },
+            {
+              "sourceUrl": "img/CGs/secondMasturbation/chest/chest1.png",
+              "condition": "$d13chest",
+              "requirement": 3,
+              "url": "images/cg_layers/secondMasturbation/chest/chest1.webp",
+              "_source": "img/CGs/secondMasturbation/chest/chest1.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$d13chest",
+              "label_zh": "d13chest",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$d13hair",
+              "label_zh": "d13hair",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            }
+          ]
+        }
+      ]
+    },
+    "AmberTalk": {
+      "id": "cg-gallery-amber-talk",
+      "title": "Amber Talk",
+      "title_zh": "Amber 對話",
+      "variants": [
+        {
+          "variant_name": "loose_hair",
+          "variant_zh": "散髮",
+          "condition": "$ambertalkCGhairStyle is 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkBackground.png",
+              "url": "images/cg_layers/amberTalk/amberTalkBackground.webp",
+              "_source": "img/CGs/amberTalk/amberTalkBackground.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkAmber.png",
+              "url": "images/cg_layers/amberTalk/amberTalkAmber.webp",
+              "_source": "img/CGs/amberTalk/amberTalkAmber.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanBase.png",
+              "url": "images/cg_layers/amberTalk/amberTalkFethanBase.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanBase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanBaseS.png",
+              "condition": "$ambertalkCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanBaseS.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanBaseS.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanBaseM.png",
+              "condition": "$ambertalkCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanBaseM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanBaseM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanEyeM.png",
+              "condition": "$ambertalkCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanEyeM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanEyeM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanEyeM.png",
+              "condition": "$ambertalkCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanEyeM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanEyeM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanEyeM.png",
+              "condition": "$ambertalkCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanEyeM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanEyeM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairS.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairS.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairS.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairS.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairS.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairS.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairM.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairL.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairL.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairL.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairFront.png",
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairFront.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairFront.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanSidelock.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanSidelock.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanSidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanSidelock.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanSidelock.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanSidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkEffects.png",
+              "url": "images/cg_layers/amberTalk/amberTalkEffects.webp",
+              "_source": "img/CGs/amberTalk/amberTalkEffects.png"
+            },
+            {
+              "sourceUrl": "img/additional/watermark.png",
+              "url": "images/cg_layers/img/additional/watermark.webp",
+              "_source": "img/additional/watermark.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$ambertalkCGbreasts",
+              "label_zh": "Amber 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$ambertalkCGeyes",
+              "label_zh": "Amber 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$ambertalkCGhair",
+              "label_zh": "Amber 髮型",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            }
+          ]
+        },
+        {
+          "variant_name": "ponytail",
+          "variant_zh": "馬尾",
+          "condition": "$ambertalkCGhairStyle is not 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkBackground.png",
+              "url": "images/cg_layers/amberTalk/amberTalkBackground.webp",
+              "_source": "img/CGs/amberTalk/amberTalkBackground.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkAmber.png",
+              "url": "images/cg_layers/amberTalk/amberTalkAmber.webp",
+              "_source": "img/CGs/amberTalk/amberTalkAmber.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanPonytailM.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanPonytailM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanPonytailM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanPonytailL.png",
+              "condition": "$ambertalkCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanPonytailL.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanPonytailL.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanBase.png",
+              "url": "images/cg_layers/amberTalk/amberTalkFethanBase.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanBase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanBaseS.png",
+              "condition": "$ambertalkCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanBaseS.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanBaseS.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanBaseM.png",
+              "condition": "$ambertalkCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanBaseM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanBaseM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanEyeM.png",
+              "condition": "$ambertalkCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanEyeM.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanEyeM.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanEyeL.png",
+              "condition": "$ambertalkCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanEyeL.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanEyeL.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanEyeL.png",
+              "condition": "$ambertalkCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanEyeL.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanEyeL.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairFront.png",
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairFront.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairFront.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanSidelock.png",
+              "url": "images/cg_layers/amberTalk/amberTalkFethanSidelock.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanSidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairtie1.png",
+              "condition": "$ambertalkCGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairtie1.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairtie2.png",
+              "condition": "$ambertalkCGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairtie2.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairtie3.png",
+              "condition": "$ambertalkCGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairtie3.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairtie4.png",
+              "condition": "$ambertalkCGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairtie4.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairtie4.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkFethanHairS.png",
+              "url": "images/cg_layers/amberTalk/amberTalkFethanHairS.webp",
+              "_source": "img/CGs/amberTalk/amberTalkFethanHairS.png"
+            },
+            {
+              "sourceUrl": "img/CGs/amberTalk/amberTalkEffects.png",
+              "url": "images/cg_layers/amberTalk/amberTalkEffects.webp",
+              "_source": "img/CGs/amberTalk/amberTalkEffects.png"
+            },
+            {
+              "sourceUrl": "img/additional/watermark.png",
+              "url": "images/cg_layers/img/additional/watermark.webp",
+              "_source": "img/additional/watermark.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$ambertalkCGbreasts",
+              "label_zh": "Amber 胸部",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$ambertalkCGeyes",
+              "label_zh": "Amber 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$ambertalkCGhair",
+              "label_zh": "Amber 髮型",
+              "type": "number",
+              "min": 2,
+              "max": 3,
+              "default": 2
+            },
+            {
+              "var": "$ambertalkCGhairtie",
+              "label_zh": "Amber 髮帶",
+              "type": "number",
+              "min": 1,
+              "max": 4,
+              "default": 1
+            }
+          ]
+        }
+      ]
+    },
+    "ShatterBox": {
+      "id": "cg-gallery-shatterbox",
+      "title": "ShatterBox",
+      "title_zh": "ShatterBox",
+      "variants": [
+        {
+          "variant_name": "loose_hair",
+          "variant_zh": "散髮",
+          "condition": "$shatterboxCGhairStyle is 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxbase.png",
+              "url": "images/cg_layers/shatterbox/shatterboxbase.webp",
+              "_source": "img/CGs/shatterbox/shatterboxbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairs.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairs.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairs.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairs.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairs.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairs.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairm.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairl.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethan.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 0,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethan.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethan.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethan.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethanbreastss.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethanbreastss.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethanbreastss.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethanbreastsm.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethanbreastsm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethanbreastsm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneyesm.png",
+              "condition": "$shatterboxCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneyesm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneyesm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneyesl.png",
+              "condition": "$shatterboxCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneyesl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneyesl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneyesl.png",
+              "condition": "$shatterboxCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneyesl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneyesl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionsidelock.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionsidelock.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionsidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionsidelock.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionsidelock.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionsidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairfront.png",
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairfront.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairfront.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneffect.png",
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneffect.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneffect.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxfethan.png",
+              "url": "images/cg_layers/shatterbox/shatterboxfethan.webp",
+              "_source": "img/CGs/shatterbox/shatterboxfethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelocks.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelocks.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelocks.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelocks.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelocks.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelocks.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelockl.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelockl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelockl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelockl.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelockl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelockl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairs.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/shatterbox/shatterboxhairs.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairs.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairs.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxhairs.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairs.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairm.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxhairm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairl.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxhairl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairl.png"
+            },
+            {
+              "sourceUrl": "img/additional/watermark.png",
+              "url": "images/cg_layers/img/additional/watermark.webp",
+              "_source": "img/additional/watermark.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$shatterboxCGbreasts",
+              "label_zh": "Shatterbox 胸部",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            },
+            {
+              "var": "$shatterboxCGeyes",
+              "label_zh": "Shatterbox 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$shatterboxCGhair",
+              "label_zh": "Shatterbox 髮型",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            }
+          ]
+        },
+        {
+          "variant_name": "ponytail",
+          "variant_zh": "馬尾",
+          "condition": "$shatterboxCGhairStyle is not 0",
+          "layers": [
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxbase.png",
+              "url": "images/cg_layers/shatterbox/shatterboxbase.webp",
+              "_source": "img/CGs/shatterbox/shatterboxbase.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionponytailm.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionponytailm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionponytailm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionponytaill.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionponytaill.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionponytaill.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairtie1.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairtie1.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairtie2.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairtie2.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairtie3.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairtie3.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairtie4.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairtie4.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairtie4.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethan.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 0,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethan.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethan.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethan.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethanbreastss.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethanbreastss.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethanbreastss.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionfethanbreastsm.png",
+              "condition": "$shatterboxCGbreasts",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionfethanbreastsm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionfethanbreastsm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneyesm.png",
+              "condition": "$shatterboxCGeyes",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneyesm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneyesm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneyesl.png",
+              "condition": "$shatterboxCGeyes",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneyesl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneyesl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneyesl.png",
+              "condition": "$shatterboxCGeyes",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneyesl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneyesl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionsidelock.png",
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionsidelock.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionsidelock.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectionhairfront.png",
+              "url": "images/cg_layers/shatterbox/shatterboxreflectionhairfront.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectionhairfront.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxreflectioneffect.png",
+              "url": "images/cg_layers/shatterbox/shatterboxreflectioneffect.webp",
+              "_source": "img/CGs/shatterbox/shatterboxreflectioneffect.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxfethan.png",
+              "url": "images/cg_layers/shatterbox/shatterboxfethan.webp",
+              "_source": "img/CGs/shatterbox/shatterboxfethan.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelocks.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 0,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelocks.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelocks.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelocks.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelocks.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelocks.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelockl.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelockl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelockl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxsidelockl.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxsidelockl.webp",
+              "_source": "img/CGs/shatterbox/shatterboxsidelockl.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxponytailm.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxponytailm.webp",
+              "_source": "img/CGs/shatterbox/shatterboxponytailm.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxponytaill.png",
+              "condition": "$shatterboxCGhair",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxponytaill.webp",
+              "_source": "img/CGs/shatterbox/shatterboxponytaill.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairtie1.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 1,
+              "url": "images/cg_layers/shatterbox/shatterboxhairtie1.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairtie1.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairtie2.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 2,
+              "url": "images/cg_layers/shatterbox/shatterboxhairtie2.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairtie2.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairtie3.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 3,
+              "url": "images/cg_layers/shatterbox/shatterboxhairtie3.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairtie3.png"
+            },
+            {
+              "sourceUrl": "img/CGs/shatterbox/shatterboxhairtie4.png",
+              "condition": "$shatterboxCGhairtie",
+              "requirement": 4,
+              "url": "images/cg_layers/shatterbox/shatterboxhairtie4.webp",
+              "_source": "img/CGs/shatterbox/shatterboxhairtie4.png"
+            },
+            {
+              "sourceUrl": "img/additional/watermark.png",
+              "url": "images/cg_layers/img/additional/watermark.webp",
+              "_source": "img/additional/watermark.png"
+            }
+          ],
+          "controls": [
+            {
+              "var": "$shatterboxCGbreasts",
+              "label_zh": "Shatterbox 胸部",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            },
+            {
+              "var": "$shatterboxCGeyes",
+              "label_zh": "Shatterbox 眼睛",
+              "type": "number",
+              "min": 1,
+              "max": 3,
+              "default": 1
+            },
+            {
+              "var": "$shatterboxCGhair",
+              "label_zh": "Shatterbox 髮型",
+              "type": "number",
+              "min": 0,
+              "max": 3,
+              "default": 0
+            },
+            {
+              "var": "$shatterboxCGhairtie",
+              "label_zh": "Shatterbox 髮帶",
+              "type": "number",
+              "min": 1,
+              "max": 4,
+              "default": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
